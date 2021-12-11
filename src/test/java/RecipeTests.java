@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeTests {
-
     @Test
     public void CreateRecipe(){
-        List<Ingredients> ingredientsList = new ArrayList<>();
         Ingredients spaghetti = new Ingredients("spaghetti");
         Ingredients tomatosauce = new Ingredients("tomatosauce");
+
+        List<Ingredients> ingredientsList = new ArrayList<>();
 
         ingredientsList.add(spaghetti);
         ingredientsList.add(tomatosauce);
@@ -19,6 +19,18 @@ public class RecipeTests {
         Recipe recipe = new Recipe("spaghetti", "a plate of spaghetti", "cook spaghetti and put on plate", ingredientsList);
 
         Assertions.assertEquals("spaghetti", recipe.getName());
-        Assertions.assertNotNull(recipe.getIngredients());
+        Assertions.assertEquals(ingredientsList, recipe.getIngredients());
     }
+
+    @Test
+    public void addIngredientToRecipe(){
+        List<Ingredients> ingredientsList = new ArrayList<>();
+
+        Recipe recipe = new Recipe("spaghetti", "a plate of spaghetti", "cook spaghetti and put on plate", ingredientsList);
+
+        recipe.addIngredient("meat");
+
+        Assertions.assertEquals(ingredientsList, recipe.getIngredients());
+    }
+
 }

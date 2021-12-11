@@ -15,6 +15,11 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public void addIngredient(String name){
+        Ingredients ingredient = new Ingredients(name);
+        ingredients.add(ingredient);
+    }
+
     public String getName() {
         return name;
     }
